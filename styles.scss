@@ -1,0 +1,473 @@
+// Variables
+$main-font: 'Imprima',
+sans-serif;
+$lilac-color: #e1a1ff;
+$coral-color: #ff7f50;
+$light-green-color: #60c2478e;
+//#3a80006b  #ff7f50
+
+// Mixins 
+
+@mixin mobFullWidthBtn($bg-col) {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: $bg-col;
+    font-family: $main-font;
+    text-transform: uppercase;
+}
+
+@mixin navLinkHover() {
+    text-shadow: 5px 4px 3px #d9f5cc;
+}
+
+// Base styles
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $main-font;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
+
+// Navigation
+.navbar {
+    padding: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-brand {
+    color: $lilac-color;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+
+    & i {
+        color: $light-green-color;
+    }
+}
+
+.nav-menu {
+    transition: 0.6s all ease;
+    position: absolute;
+    width: 260px;
+    left: -260px;
+    top: 0;
+    height: 100%;
+    z-index: 999;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+
+    // Nav items within the collapsable menu
+    & .nav-item {
+        margin: 0 0.5rem;
+        text-align: center;
+        padding: 1.3rem 0;
+        border-bottom: 1px solid $lilac-color;
+        color: $light-green-color;
+
+        & i {
+            padding-right: 0.5rem;
+        }
+    }
+}
+
+.nav-item:hover {
+    @include navLinkHover();
+}
+
+// Nav link when the screen is above 600px (Added w js)
+.md-nav-shop {
+    color: $light-green-color;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &:hover {
+        @include navLinkHover();
+    }
+}
+
+// Nav icons that are always visible
+.nav-cart i,
+.nav-toggler i {
+    color: $light-green-color;
+    font-size: 1.2rem;
+    padding-right: 5px;
+
+    &:hover {
+        @include navLinkHover();
+    }
+}
+
+// Hamburger menu transitions
+.nav-open {
+    left: 0px;
+}
+
+.content {
+    transition: 0.6s all ease;
+}
+
+.content-shift {
+    margin-left: 260px;
+}
+
+// Hero section
+.hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 2.2rem;
+}
+
+.hero-left {
+    width: 95%;
+    margin: 0 auto;
+    order: 2;
+
+    & h1 {
+        text-align: center;
+        font-size: 1.4rem;
+        padding: 0.8rem 0;
+        color: $lilac-color;
+    }
+
+    & p {
+        width: 95%;
+        text-align: center;
+        font-size: 0.8rem;
+        line-height: 1.2rem;
+    }
+
+    & .hero-btn {
+        @include mobFullWidthBtn($light-green-color);
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin: 5px 0;
+        border-radius: 10px;
+
+        &:hover {
+            box-shadow: 5px 5px 5px #b3c2ac;
+        }
+    }
+}
+
+.hero-right {
+    order: 1;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+
+    img {
+        height: auto;
+    }
+}
+
+// Shipping banner section
+.shipping-banner {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.shipping-banner::after {
+    content: "";
+    background-image: url("./images/succulents.jpg");
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.shipping-banner-text {
+    p {
+        font-size: 0.7rem;
+        font-family: $main-font;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    i {
+        padding-right: 7px;
+    }
+}
+
+// Plant of the month section
+.month-container {
+    width: 95%;
+    margin: 2rem auto;
+
+    & .month-heading {
+        text-align: center;
+        font-size: 1rem;
+        padding-bottom: 0.9rem;
+    }
+
+    & .month-info-left {
+        font-size: 0.8rem;
+
+        a {
+            text-transform: uppercase;
+            border-bottom: 1px solid $coral-color;
+        }
+
+        p {
+            padding: 0.5rem 0;
+            line-height: 1.2rem;
+        }
+    }
+
+    .month-info-right img {
+        border-radius: 10px;
+    }
+
+    & .month-btn {
+        @include mobFullWidthBtn($coral-color);
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin: 5px 0;
+        border-radius: 10px;
+
+        &:hover {
+            box-shadow: 5px 5px 5px #b3c2ac;
+        }
+    }
+}
+
+// Footer banner
+.footer-banner {
+    width: 100%;
+    height: 8vh;
+    position: relative;
+}
+
+.footer-banner::after {
+    content: "";
+    background-image: url("./images/succulents.jpg");
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+// Footer section
+
+.promises-container {
+    width: 70%;
+    margin: 2.2rem auto;
+    text-align: center;
+
+    & .promises-header {
+        text-align: center;
+        font-size: 0.8rem;
+        padding-bottom: 0.7rem;
+    }
+
+    & .promises-info {
+        padding: 0.7rem 0;
+
+        p {
+            font-size: 0.8rem;
+            line-height: 1.2rem;
+        }
+
+        i {
+            font-size: 2rem;
+            color: $light-green-color;
+            padding: 0.4rem 0;
+        }
+    }
+}
+
+// Media queries
+@media (min-width: 600px) {
+    .nav-brand {
+        font-size: 2rem;
+    }
+
+    .md-nav-shop {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .md-nav-shop,
+    .nav-cart i,
+    .nav-toggler i {
+        font-size: 1.4rem;
+    }
+
+    .nav-menu .nav-item {
+        padding: 2.2rem 0;
+        font-size: 1.2rem;
+    }
+
+    .hero-left {
+        width: 75%;
+
+        & h1 {
+            font-size: 2rem;
+        }
+
+        & p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .hero-btn {
+            font-size: 1.2rem;
+        }
+    }
+
+    .shipping-banner {
+        margin-top: 2rem;
+        height: 12vh;
+
+        & p {
+            font-size: 1rem;
+        }
+    }
+
+    .month-container {
+        width: 90%;
+
+        & .month-heading {
+            font-size: 1.2rem;
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    .month-info {
+        display: flex;
+        align-items: center;
+
+        & .month-info-left {
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+
+        .month-btn {
+            font-size: 1.2rem;
+        }
+    }
+
+    .footer-banner {
+        height: 12vh;
+    }
+
+    .promises-container {
+        width: 90%;
+
+        h2 {
+            font-size: 1.7rem;
+        }
+
+        .promises-info-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-column-gap: 1rem;
+        }
+
+        .promises-info {
+
+            p {
+                font-size: 1rem;
+                line-height: 1.5rem;
+            }
+
+            i {
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-left {
+        h1 {
+            font-size: 2.5rem;
+            padding: 2rem 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+
+        .hero-btn {
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            margin: 0.8rem 0;
+        }
+    }
+
+    .shipping-banner {
+        height: 18vh;
+
+        p {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+    }
+
+    .month-container {
+        width: 85%;
+        margin: 3rem auto;
+
+        .month-heading {
+            font-size: 1.4rem;
+            padding-bottom: 3rem;
+        }
+
+        .month-info-left {
+
+            a,
+            p {
+                font-size: 1.3rem;
+                line-height: 2.5rem;
+            }
+        }
+
+        .month-btn {
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+        }
+    }
+
+    .footer-banner {
+        height: 18vh;
+    }
+}
