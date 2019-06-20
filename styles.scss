@@ -60,7 +60,7 @@ a {
 .nav-brand {
     color: $lilac-color;
     text-transform: uppercase;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 
     & i {
         color: $light-green-color;
@@ -177,7 +177,6 @@ a {
 .hero-right {
     order: 1;
     width: 100%;
-    height: 60vh;
     overflow: hidden;
 
     img {
@@ -198,7 +197,7 @@ a {
 .shipping-banner::after {
     content: "";
     background-image: url("./images/succulents.jpg");
-    opacity: 0.8;
+    opacity: 0.7;
     top: 0;
     left: 0;
     bottom: 0;
@@ -272,7 +271,7 @@ a {
 .footer-banner::after {
     content: "";
     background-image: url("./images/succulents.jpg");
-    opacity: 0.8;
+    opacity: 0.7;
     top: 0;
     left: 0;
     bottom: 0;
@@ -318,6 +317,10 @@ a {
 
     .md-nav-shop {
         font-size: 1.1rem;
+    }
+
+    .hero-right {
+        height: 50vh;
     }
 }
 
@@ -432,6 +435,10 @@ a {
             letter-spacing: 4px;
             margin: 0.8rem 0;
         }
+    }
+
+    .hero-right {
+        height: 55vh;
     }
 
     .shipping-banner {
