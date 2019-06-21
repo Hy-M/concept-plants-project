@@ -11,25 +11,41 @@ function main() {
         })
     }
 
-    const appendShopLink = _ => {
-        const mdHiddenShopLink = document.querySelector(".md-hidden");
-        let mdVisibleEmptyDiv = document.querySelector(".md-visible");
+    const hiddenShopLink = document.querySelector(".md-hidden");
+    let visibleEmptyDiv = document.querySelector(".md-visible");
 
-        mdVisibleShopLinkHTML = `
+    let visibleShopLinkHTML = `
             <a href="./shop.html" class="md-nav-shop">Shop</a>
             `;
 
-        if (window.innerWidth >= 600) {
-            mdHiddenShopLink.style.display = "none";
-            mdVisibleEmptyDiv.innerHTML += mdVisibleShopLinkHTML;
+    const w = window.matchMedia("(min-width: 600px)");
+
+    const checkMediaQueries = (w) => {
+        if (w.matches) {
+            hiddenShopLink.style.display = "none";
+            visibleEmptyDiv.innerHTML += visibleShopLinkHTML;
         } else {
-            mdHiddenShopLink.style.display="block";
+            hiddenShopLink.style.display = "block";
+            visibleEmptyDiv.innerHTML = "";
         }
     }
 
-
     toggleNav();
-    appendShopLink();
+    w.addEventListener("change", checkMediaQueries);
+    document.addEventListener("onload", checkMediaQueries);
 }
 
 main();
+
+
+// function myFunction(x) {
+//   if (x.matches) { // If media query matches
+//     document.body.style.backgroundColor = "yellow";
+//   } else {
+//     document.body.style.backgroundColor = "pink";
+//   }
+// }
+
+// var x = window.matchMedia("(max-width: 700px)")
+// myFunction(x) // Call listener function at run time
+// x.addListener(myFunction) // Attach listener function on state changes
